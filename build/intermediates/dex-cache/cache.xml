@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\exploded-aar\RFInD\volley\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="86d150c4d996475cdde7045aa8b8550286c0b3c0">
+        <dex dex="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\pre-dexed\debug\classes-d84fd709256dcf9bb4825f5daea23c273e85635f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\pre-dexed\debug\classes-418895d6c144352ef85290f5c98964eda831df5c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Kyle\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-7892a3a25ebeab183a1a14dbdd788e5d8dad9eb4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-7e5726ca9bcf74c5b88c24fc959640040837aa8c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="C:\Users\Kyle\AndroidStudioProjects\RFInD\app\build\intermediates\pre-dexed\debug\classes-dd3ebed70a0febce13cb5353972d6887dc49ad5f.jar" />
+    </item>
+
+</items>
