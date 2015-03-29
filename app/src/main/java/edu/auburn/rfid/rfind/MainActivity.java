@@ -12,6 +12,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -26,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
 
         mTextView = (TextView) findViewById(R.id.text);
 
-        JsonObjectRequest request = new JsonObjectRequest("http://cblunt.github.io/blog-android-volley/response.json", null,
+        JsonObjectRequest request = new JsonObjectRequest("http://aurfid.herokuapp.com/upc_descriptions.json", null,
                 new Response.Listener<JSONObject>() {
 
                     @Override
