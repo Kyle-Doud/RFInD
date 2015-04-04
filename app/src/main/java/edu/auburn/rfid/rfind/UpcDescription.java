@@ -1,4 +1,7 @@
 package edu.auburn.rfid.rfind;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 /**
  * Created by Kyle on 3/27/2015.
@@ -6,17 +9,20 @@ import java.util.ArrayList;
 public class UpcDescription {
     private String fit, style, color, vendor, size;
     private int upc;
-    private ArrayList<Product> products;
 
-    public UpcDescription(String fitIn, String styleIn, String colorIn, int upcIn, String vendorIn, String sizeIn)
+    public UpcDescription(JSONObject jsonObject)
     {
-        this.fit = fitIn;
-        this.style = styleIn;
-        this. color = colorIn;
-        this.vendor = vendorIn;
-        this.size = sizeIn;
-        this.upc = upcIn;
-        products = new ArrayList<Product>();
+        try {
+            this.fit = jsonObject.getString("fit");
+            this.style = jsonObject.getString("style");
+            this.color = jsonObject.getString("color");
+            this.upc = jsonObject.getInt("upc");
+            this.vendor = jsonObject.getString("vendor");
+            this.size = jsonObject.getString("size");
+        }
+        catch (JSONException e) {
+            //do something graceful
+        }
     }
 
     public String getFit() {
@@ -62,17 +68,8 @@ public class UpcDescription {
     public int getUpc() {
         return upc;
     }
-
     public void setUpc(int upc) {
         this.upc = upc;
-    }
-
-    public ArrayList<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
     }
 
 

@@ -16,37 +16,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends ActionBarActivity {
-
-    private TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView = (TextView) findViewById(R.id.text);
-
-        JsonObjectRequest request = new JsonObjectRequest("http://aurfid.herokuapp.com/upc_descriptions.json", null,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        mTextView.setText(response.toString());
-                    }
-                },
-
-                new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        mTextView.setText(error.toString());
-                    }
-                }
-        );
-        VolleyApplication.getInstance().getRequestQueue().add(request);
+        QueryManager queryManager = new QueryManager();
+        ArrayList<RfidItem> featuredItemsList = queryManager.getFeaturedItems();
 
     }
     @Override
