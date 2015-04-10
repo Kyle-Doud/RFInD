@@ -9,47 +9,22 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:weightSum="1">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="3">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Featured"
-                android:id="@+id/button"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Apparel"
-                android:id="@+id/button2"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Department"
-                android:id="@+id/button3"
-                android:layout_weight="1" />
-        </LinearLayout>
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
 
         <GridView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="left"
+            android:layout_height="match_parent"
+            android:gravity="start"
+            android:columnWidth="90dp"
             android:stretchMode="columnWidth"
             android:numColumns="2"
-            android:id="@+id/gridView"
-            android:layout_weight="1.96" />
+            android:id="@+id/Upc_Descriptions_Grid"
+            android:choiceMode="singleChoice" />
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

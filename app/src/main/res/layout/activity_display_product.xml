@@ -1,0 +1,147 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="edu.auburn.rfid.rfind.DispalyProductActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ProductImage"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="21dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Vendor: "
+        android:id="@+id/Vendor"
+        android:layout_above="@+id/Style"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Style: "
+        android:id="@+id/Style"
+        android:layout_above="@+id/Color"
+        android:layout_toLeftOf="@+id/Vendor_Field"
+        android:layout_toStartOf="@+id/Vendor_Field"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Color: "
+        android:id="@+id/Color"
+        android:layout_above="@+id/Size"
+        android:layout_alignRight="@+id/Location"
+        android:layout_alignEnd="@+id/Location"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Size: "
+        android:id="@+id/Size"
+        android:layout_above="@+id/Fit"
+        android:layout_alignRight="@+id/Style"
+        android:layout_alignEnd="@+id/Style"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Fit: "
+        android:id="@+id/Fit"
+        android:layout_above="@+id/Location"
+        android:layout_toLeftOf="@+id/Size_Field"
+        android:layout_toStartOf="@+id/Size_Field"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Location: "
+        android:id="@+id/Location"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/Fit_Field"
+        android:layout_toStartOf="@+id/Fit_Field"
+        android:layout_marginBottom="38dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Vendor_Field"
+        android:layout_alignTop="@+id/Vendor"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/Vendor"
+        android:layout_toEndOf="@+id/Vendor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Style_Field"
+        android:layout_alignTop="@+id/Style"
+        android:layout_toRightOf="@+id/Style"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Color_Field"
+        android:layout_alignTop="@+id/Color"
+        android:layout_toRightOf="@+id/Style"
+        android:layout_alignRight="@+id/Style_Field"
+        android:layout_alignEnd="@+id/Style_Field" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Size_Field"
+        android:layout_alignTop="@+id/Size"
+        android:layout_toRightOf="@+id/Size"
+        android:layout_alignRight="@+id/Color_Field"
+        android:layout_alignEnd="@+id/Color_Field"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Fit_Field"
+        android:layout_alignTop="@+id/Fit"
+        android:layout_toRightOf="@+id/Fit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Location_List"
+        android:layout_alignTop="@+id/Location"
+        android:layout_toRightOf="@+id/Location"
+        android:layout_toEndOf="@+id/Location"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

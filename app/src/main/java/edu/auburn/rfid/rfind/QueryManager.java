@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -15,41 +16,46 @@ import java.util.ArrayList;
  */
 public class QueryManager {
 
-    private ArrayList<RfidItem> featuredItems = new ArrayList<RfidItem>();
+    private static final String Host_Address = "http://aurfid.herokuapp.com/";
+    private ArrayList<RfidItem> featuredItems = new ArrayList<>();
 
-    public QueryManager()
-    {
+    public QueryManager() {
 
     }
 
-    public ArrayList<RfidItem> getFeaturedItems()
-    {
+    private void pingServerForWakeUp() {
+        try {
+            Process process = Runtime.getRuntime().exec("ping -4w 10000" + Host_Address);
+            process.destroy();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public ArrayList<RfidItem> getFeaturedItems() {
         featuredItems.clear();
-        JsonObjectRequest request = new JsonObjectRequest("http://aurfid.herokuapp.com/upc_descriptions.json", null,
+        pingServerForWakeUp();
+        JsonObjectRequest request = new JsonObjectRequest(Host_Address + "upc_descriptions.json", null,
                 new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        try
-                        {
+                        try {
                             JSONArray upcDescriptions = response.getJSONArray("upc_descriptions");
-                            for(int i = 0; i < upcDescriptions.length(); i++)
-                            {
+                            for(int i = 0; i < upcDescriptions.length(); i++) {
                                 RfidItem rfidItem = new RfidItem(upcDescriptions.getJSONObject(i));
                                 featuredItems.add(rfidItem);
                             }
 
                         }
-                        catch (JSONException e)
-                        {
-                            //do something graceful
+                        catch (JSONException e) {
+                            e.printStackTrace();
                         }
-
                     }
                 },
 
                 new Response.ErrorListener() {
-
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
