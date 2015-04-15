@@ -1,11 +1,11 @@
 package edu.auburn.rfid.rfind;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,19 +13,27 @@ import java.util.ArrayList;
 
 public class ItemAdapter extends BaseAdapter {
 
-    public ItemAdapter(Context context, ArrayList list) {
+    public ItemAdapter(Context context, ArrayList<RfidItem> list) {
         Adapter_Context = context;
         Adapter_List = list;
     }
 
     @Override
     public int getCount() {
-        return Adapter_List.size();
+        if (Adapter_List != null) {
+            return Adapter_List.size();
+        } else {
+            return - 1;
+        }
     }
 
     @Override
     public Object getItem(int position) {
-        return Adapter_List.get(position);
+        if (position < Adapter_List.size() && position > -1) {
+            return Adapter_List.get(position);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -39,6 +47,7 @@ public class ItemAdapter extends BaseAdapter {
         return result;
     }
 
+    @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //https://www.caveofprogramming.com/guest-posts/custom-gridview-with-imageview-and-textview-in-android.html

@@ -1,5 +1,6 @@
 package edu.auburn.rfid.rfind;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -17,13 +18,9 @@ import java.util.ArrayList;
 public class QueryManager {
 
     private static final String Host_Address = "http://aurfid.herokuapp.com/";
-    private ArrayList<RfidItem> featuredItems = new ArrayList<>();
+    private static final String JSON = ".json";
 
-    public QueryManager() {
-
-    }
-
-    private void pingServerForWakeUp() {
+    private static void pingServerForWakeUp() {
         try {
             Process process = Runtime.getRuntime().exec("ping -4w 10000" + Host_Address);
             process.destroy();
@@ -33,19 +30,27 @@ public class QueryManager {
 
     }
 
-    public ArrayList<RfidItem> getFeaturedItems() {
-        featuredItems.clear();
+    public static ArrayList<RfidItem> getRequestedItems(String query) {
+        final ArrayList<RfidItem> resultant_list = new ArrayList<>();
         pingServerForWakeUp();
-        JsonObjectRequest request = new JsonObjectRequest(Host_Address + "upc_descriptions.json", null,
+        String request_address;
+        if (query.equals("")) {
+            request_address = Host_Address + "upc_descriptions" + JSON;
+        } else {
+            request_address = Host_Address + "upc_descriptions?utf8=✓&search=" + query;
+        }
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                request_address,
+                null,
                 new Response.Listener<JSONObject>() {
-
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray upcDescriptions = response.getJSONArray("upc_descriptions");
                             for(int i = 0; i < upcDescriptions.length(); i++) {
                                 RfidItem rfidItem = new RfidItem(upcDescriptions.getJSONObject(i));
-                                featuredItems.add(rfidItem);
+                                resultant_list.add(rfidItem);
                             }
 
                         }
@@ -54,8 +59,8 @@ public class QueryManager {
                         }
                     }
                 },
-
                 new Response.ErrorListener() {
+
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
@@ -63,6 +68,6 @@ public class QueryManager {
                 }
         );
         VolleyApplication.getInstance().getRequestQueue().add(request);
-        return featuredItems;
+        return resultant_list;
     }
 }

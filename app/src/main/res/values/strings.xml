@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">RFInD</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="search_hint"></string>
+    <string name="action_search">Search</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_display_product">DisplayProductActivity</string>
-    <string name="title_activity_dispaly_product">DispalyProductActivity</string>
     <string name="Featured">Featured</string>
     <string name="Apparel">Apparel</string>
     <string name="Department">Department</string>
