@@ -1,6 +1,7 @@
 package edu.auburn.rfid.rfind;
 
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,8 @@ public class DisplayProductActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_product);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         RfidItem item = (RfidItem) ItemClickBridge.getCurrentItem();
 
@@ -75,6 +78,11 @@ public class DisplayProductActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if (id == R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 

@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SearchView;
@@ -21,17 +22,27 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        actionBarSetup();
-        gridViewSetup();
+        searchSetup();
+        ArrayList<RfidItem> items = RfidItems.getInstance().getItems(RfidItems.RequestType.Featured, "");
+        gridViewSetup(items);
     }
 
-    private void actionBarSetup() {
-
+    private void searchSetup() {
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            doMySearch(query);
+        }
     }
 
-    private void gridViewSetup() {
+    private void doMySearch(String query) {
+        ArrayList<RfidItem> items = RfidItems.getInstance().getItems(RfidItems.RequestType.Query, query);
+        gridViewSetup(items);
+    }
+
+    private void gridViewSetup(ArrayList<RfidItem> items) {
         GridView upc_description_gridview = (GridView) findViewById(R.id.Upc_Descriptions_Grid);
-        upc_description_gridview.setAdapter(new ItemAdapter(this, RfidItems.getInstance().getItems()));
+        upc_description_gridview.setAdapter(new ItemAdapter(this, items));
 
         upc_description_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -41,6 +52,8 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(new Intent(view.getContext(), DisplayProductActivity.class));
             }
         });
+        ViewGroup vg = (ViewGroup) findViewById(R.id.linearLayout);
+        vg.invalidate();
     }
 
     @Override
@@ -48,10 +61,11 @@ public class MainActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        /*SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.Search_Bar).getActionView();
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setIconifiedByDefault(false);*/
+        searchView.setIconifiedByDefault(false);
+        searchView.setSubmitButtonEnabled(true);
 
         return true;
     }
@@ -66,6 +80,11 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if (id == R.id.Featured) {
+            ArrayList<RfidItem> items = RfidItems.getInstance().getItems(RfidItems.RequestType.Featured, "");
+            gridViewSetup(items);
         }
 
         return super.onOptionsItemSelected(item);
