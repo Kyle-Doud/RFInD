@@ -78,15 +78,8 @@ public class Main extends ActionBarActivity implements ItemListFragment.Callback
     }
 
     private void refresh(List<RfidItem> items) {
-        fragment.setListAdapter(new ItemAdapter(this, R.id.list_item, items));
-        fragment.getListView().invalidate();
-        fragment.getListAdapter().registerDataSetObserver(new DataSetObserver() {
-            @Override
-            public void onChanged() {
-                super.onChanged();
-                notify();
-            }
-        });
+        fragment.setListAdapter(new ItemAdapter(this, R.layout.item, items));
+        ((ItemAdapter)fragment.getListAdapter()).notifyDataSetChanged();
     }
 
     private ItemListFragment fragment;
@@ -112,7 +105,7 @@ public class Main extends ActionBarActivity implements ItemListFragment.Callback
                         try {
                             RfidItem.Item_Map.clear();
                             JSONArray upcDescriptions = response.getJSONArray("upc_descriptions");
-                            for(int i = 0; i < upcDescriptions.length() - 1; i++) {
+                            for(int i = 0; i < upcDescriptions.length(); i++) {
                                 RfidItem rfidItem = new RfidItem(upcDescriptions.getJSONObject(i));
                                 RfidItem.Item_Map.put("item_id" + Integer.toString(i), rfidItem);
                             }

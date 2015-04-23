@@ -27,7 +27,7 @@ public class Request {
 
     public static String createAddress(String query) {
         pingServerForWakeUp();
-        return Host_Address + "?utf8=✓&search=" + query;
+        return Host_Address + "?utf8=✓&search=" + query.toLowerCase();
     }
 
     private static String createCategoryAddress(RfidItem.RequestType type) {
